@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import ExpenseDetails from "./pages/expense/ExpenseDetails";
 import NewExpense from "./pages/expense/NewExpense";
 import Register from "./pages/register/Register";
-import Login from "./pages/login/login";
+import Login from "./pages/login/Login";
 import ExpenseReports from "./pages/expense/ExpenseReports";
 
 const App = () => {
