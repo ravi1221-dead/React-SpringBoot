@@ -1,5 +1,6 @@
 package com.example.restapi.Service;
 
+import com.example.restapi.Exception.ResourceNotFoundException;
 import com.example.restapi.Model.DTO.ExpenseDTO;
 import com.example.restapi.Model.ExpenseRequest;
 import com.example.restapi.Repository.ExpenseRepository;
@@ -32,6 +33,14 @@ public class ExpenseServiceImplementation implements ExpenseService{
         // Return the list
         return listOfExpenses;
 
+    }
+
+    @Override
+    public ExpenseDTO getExpenseByIdExpenseId(String expenseId) {
+        ExpenseEntity expenseEntity = expenseRepository.findByExpenseId(expenseId)
+                .orElseThrow(() -> new ResourceNotFoundException("expense not found with expense id" + expenseId));
+        log.info ("printing the expense entity details {}", expenseEntity);
+        return mapToExpenseDTO(expenseEntity);
     }
 
     private ExpenseDTO mapToExpenseDTO(ExpenseEntity expenseEntity){
